@@ -1,12 +1,14 @@
 import fastify from 'fastify';
-import { knex } from './database';
+import knex from 'knex';
 
 const app = fastify();
 
 app.get('/hello', async () => {
-  const tables = await knex('sqlite_schema').select('*');
+  const transaction = await knex('transactions')
+    .where('amount', 100)
+    .select('*');
 
-  return tables;
+  return transaction;
 });
 
 app
