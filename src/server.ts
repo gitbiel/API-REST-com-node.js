@@ -1,14 +1,14 @@
 import fastify from 'fastify';
-import knex from 'knex';
+import { knex } from './database';
 
 const app = fastify();
 
 app.get('/hello', async () => {
-  const transaction = await knex('transactions')
+  const transactions = await knex('transactions')
     .where('amount', 100)
     .select('*');
 
-  return transaction;
+  return transactions;
 });
 
 app
