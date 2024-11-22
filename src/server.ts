@@ -1,16 +1,10 @@
 import fastify from 'fastify';
-import { knex } from './database';
 import { env } from './env';
+import { transactionRoutes } from './routes/transaction';
 
 const app = fastify();
 
-app.get('/hello', async () => {
-  const transactions = await knex('transactions')
-    .where('amount', 100)
-    .select('*');
-
-  return transactions;
-});
+app.register(transactionRoutes);
 
 app
   .listen({
