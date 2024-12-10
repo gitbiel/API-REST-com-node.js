@@ -13,12 +13,14 @@
     "globals": "^15.11.0",
     "prettier": "^3.3.3",
     "tsx": "^4.19.1",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.8"
   },
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "knex": "node --no-warnings --import tsx ./node_modules/.bin/knex",
-    "lint": "npx eslint --fix src/"
+    "lint": "npx eslint --fix src/",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
